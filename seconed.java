@@ -1,0 +1,43 @@
+import java.awt.*;
+import javax.swing.*;
+public class JFrameTest extends JFrame {
+TextField box = new TextField();
+String spChars[] = {"x" , "/" , "+" , "-" , "y" , "k" , "0" ,"r"};
+    public static void main(String[] args) {
+            JFrameTest app = new JFrameTest();
+    }
+
+    public JFrameTest() {
+        super("claculator");
+        setSize(500, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	JButton buttons [] = new JButton[24 -8];
+        JPanel jp = new JPanel();
+	
+	int x = 0 , num = 1 , bunnum = 0;
+	for (int i = 0 ; i < 4; i ++ ) 
+	{
+		for (int c = 0; c < 4; c++) {
+			if (i == 0 || c == 3)
+			{
+				buttons[bunnum] = new JButton(spChars[x]);
+				x++;
+			}
+			else 
+			{
+				buttons[bunnum] = new JButton(""+num);
+				num ++ ;
+			}
+			jp.add(buttons[bunnum]);
+			bunnum ++;
+		}
+	}
+
+	jp.setLayout(new GridLayout (4,4)); // the more not inculded 
+        add(jp, BorderLayout.SOUTH);
+	add(box, BorderLayout.NORTH);
+        setVisible(true);
+	jp.setFocusable(false);
+	System.out.println("hello");
+    }
+}
