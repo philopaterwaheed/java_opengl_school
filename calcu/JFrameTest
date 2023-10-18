@@ -1,14 +1,13 @@
-package calc;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 public class JFrameTest extends JFrame {
-TextField box = new TextField();
-String spChars[] = {"x" , "/" , "+" , "-" , "y" , "k" , "0" ,"r"};
+    TextField box = new TextField();
+    String spChars[] = {"x" , "/" , "+" , "-" , "y" , "k" , "0" ,"r"};
     public static void main(String[] args) {
             JFrameTest app = new JFrameTest();
     }
-
+    pbutton bb = new pbutton();
     public JFrameTest() {
         super("claculator");
         setSize(500, 500);
