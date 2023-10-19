@@ -31,7 +31,7 @@ public class pbutton{
 			case 99 : //  = 
 				  //
 				 if (calculator.query != null){
-					calculator.outquery =  calculator.query.toString();
+		/* 			calculator.outquery =  calculator.query.toString(); */
 					calculator.clac(calculator.query);
 					calculator.query.clear();
 				 }

@@ -78,8 +78,10 @@ public class calculator extends JFrame implements ActionListener {
 		ArrayList <ArrayList <String> >  tokens ; 
 		if (logic.valid(query)){
 			System.out.println("isValid");
+			outquery = logic.tokinize(query).toString();
+
 		}
-		else{
+		else{ // done 
 			outquery = ("notValid");
 		}
 

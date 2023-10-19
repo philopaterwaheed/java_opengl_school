@@ -15,11 +15,11 @@ public static boolean  validOp (ArrayList query) {
 	//
 	if (query != null )
 	for (int i =0 ; i < op.length ; i++)
-			if (!query.isEmpty())
-			if ((String)query.get(query.size()-1) == op[i])
-				return false;
+			if (!query.isEmpty()) // tot check becuase size == 0;
+				if ((String)query.get(query.size()-1) == op[i]) // if there is an operator at the begin 
+					return false;
 
-	boolean lastIsOp = true;
+	boolean lastIsOp = true; // bolean to see if the -1 char is an operator 
 	if (query != null || query.isEmpty())
 	for (Object c : query)
 		{
@@ -56,7 +56,33 @@ public static boolean  validBrace (ArrayList query) {
 static public boolean isEnter(String x) {
 		return (x == "{"  || x == "(" || x == "[" );
 	}
+
+
 static public boolean isClosing(String x, String c) {
 		return (x == "{" && c == "}") || (x == "(" && c == ")") || (x == "[" && c == "]");
 	}
+
+
+public static ArrayList <String> tokinize (ArrayList query) {
+	ArrayList <String> output = new ArrayList<String> ();
+	for (int i = 0 ; i < query.size() ; i++ )	
+	{
+		if (Character.isDigit(((String)query.get(i)).charAt(0)))
+			if (output.isEmpty())
+				output.add((String)query.get(i));
+			else
+				if (Character.isDigit(output.get(output.size()-1).charAt(output.get(output.size()-1).length()-1)))
+				{
+					String temp = output.get(output.size() -1); 
+					temp += (String) query.get(i);
+					output.add(temp);
+				}
+				else
+				{
+					output.add((String)query.get(i));
+				}
+	}
+	return output;
+}
+
 }
