@@ -30,6 +30,7 @@ public class pbutton{
 				 break ; 
 			case 99 : //  = 
 				  //
+				 calculator.clac(calculator.query);
 				 if (calculator.query != null){
 					calculator.outquery =  calculator.query.toString();
 					 calculator.query.clear();
@@ -48,7 +49,7 @@ public class pbutton{
 
 	 void prosess ()
 	 {
-		 if (this.func != 0 )
+		 if (this.func != 0 && this.func !=1 )
 			 exe (this.func) ;
 		 else 
 			 calculator.query.add(this.name);
@@ -62,7 +63,7 @@ class instructions {
 	 static String map [][] = {
 		 {   "x^3" ,"y^/x" ,"sin-1" ,"cos-1" , "tan-1"} , 
 		 {   "1/x" ,"e^x" ,"ln" ,"dms" , "deg"} , 
-		 {   "^" ,"ce" ,"c" ,"del" , "%"} , 
+		 {   "^" ,"ce" ,"c" ,"del" , "/"} , 
 		 {   "ℼ" ,"7" ,"8" ,"9" , "x"} , 
 		 {   "n!" ,"4" ,"5" ,"6" , "-"} , 
 		 {   "+-" ,"1" ,"2" ,"3" , "+"} , 
@@ -71,12 +72,13 @@ class instructions {
 	 static int func [][] = {
 		 {1 ,2 , 3, 4 ,5 } , 
 		 {6 ,7 , 8, 9 ,10 } , 
-		 {11 ,69 , 69, -1 , 0 } , 
-		 {0, 0, 0, 0 , 0 } , 
-		 {18 , 0, 0, 0 ,0  } , 
-		 {-2,  0, 0, 0 ,0 } , 
+		 {11 ,69 , 69, -1 , 1 } , 
+		 {0, 0, 0, 0 , 1 } , 
+		 {18 , 0, 0, 0 ,1  } , 
+		 {-2,  0, 0, 0 ,1 } , 
 		 {0, 0 , 0, 25 ,99 } 
 		 // 0 are just numbers so no funtion
+		 // 1 for basic operations  
 	 } ;  
 	 
 	private instructions(){}

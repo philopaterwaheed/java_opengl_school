@@ -63,7 +63,7 @@ public class calculator extends JFrame implements ActionListener {
 	       outbox.setText(outquery);
 	
     
-    	}
+		}
     }
     
     pbutton getButton(JButton input) { 
@@ -73,9 +73,15 @@ public class calculator extends JFrame implements ActionListener {
 	return null ;
     }
     
-	void clac (ArrayList query) {
-		
-		ArrayList <ArrayList <String> >  
+	static void clac (ArrayList query) {
+		System.out.println(query);	
+		ArrayList <ArrayList <String> >  tokens ; 
+		if (logic.valid(query)){
+			System.out.println("isValid");
+		}
+		else{
+			System.out.println("notValid");
+		}
 
 	}
     
