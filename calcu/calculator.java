@@ -80,7 +80,7 @@ public class calculator extends JFrame implements ActionListener {
 			System.out.println("isValid");
 		}
 		else{
-			System.out.println("notValid");
+			outquery = ("notValid");
 		}
 
 	}

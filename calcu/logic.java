@@ -13,13 +13,14 @@ public static boolean  validOp (ArrayList query) {
 
 	// System.out.println("insde op" + operated);
 	//
+	if (query != null )
 	for (int i =0 ; i < op.length ; i++)
-		if (query != null)
+			if (!query.isEmpty())
 			if ((String)query.get(query.size()-1) == op[i])
 				return false;
 
 	boolean lastIsOp = true;
-	if (query != null)
+	if (query != null || query.isEmpty())
 	for (Object c : query)
 		{
 			for (int i =0 ; i < op.length ; i++)

@@ -30,10 +30,10 @@ public class pbutton{
 				 break ; 
 			case 99 : //  = 
 				  //
-				 calculator.clac(calculator.query);
 				 if (calculator.query != null){
 					calculator.outquery =  calculator.query.toString();
-					 calculator.query.clear();
+					calculator.clac(calculator.query);
+					calculator.query.clear();
 				 }
 
 				 break;
