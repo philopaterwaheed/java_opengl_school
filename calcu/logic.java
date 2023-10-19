@@ -67,20 +67,36 @@ public static ArrayList <String> tokinize (ArrayList query) {
 	ArrayList <String> output = new ArrayList<String> ();
 	for (int i = 0 ; i < query.size() ; i++ )	
 	{
-		if (Character.isDigit(((String)query.get(i)).charAt(0)))
-			if (output.isEmpty())
+		System.out.println(query.get(i));
+			if (output.isEmpty()) //check if empty and ad the number
 				output.add((String)query.get(i));
-			else
-				if (Character.isDigit(output.get(output.size()-1).charAt(output.get(output.size()-1).length()-1)))
+			else // if the output is not empty
+			{
+				if (Character.isDigit((output.get(output.size()-1).charAt(0)))) //if the last is a digit
 				{
-					String temp = output.get(output.size() -1); 
-					temp += (String) query.get(i);
-					output.add(temp);
+					String temp =(String) output.get(output.size()-1); // the last number 
+					
+					if (Character.isDigit(((String)query.get(i)).charAt(0)))// if the last is digit we add it 
+					{
+						System.out.println("x"+query.get(i));
+						temp += (String) query.get(i);
+						output.remove(output.size()-1);
+						output.add(temp);
+					}
+					else
+						// if a op cut and add op 
+					{
+						System.out.println("cx"+query.get(i));
+						output.add((String)query.get(i));
+					}
 				}
 				else
+					// if the last is op then add the number
 				{
+					System.out.println("xx"+query.get(i));
 					output.add((String)query.get(i));
 				}
+			}
 	}
 	return output;
 }
