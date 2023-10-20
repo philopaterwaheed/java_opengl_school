@@ -1,5 +1,7 @@
+import java.util.LinkedList;
 import java.util.Stack;
 import java.util.ArrayList;
+import java.util.Stack;
 
 
 public class logic {
@@ -99,6 +101,70 @@ public static ArrayList <String> tokinize (ArrayList query) {
 			}
 	}
 	return output;
+}
+
+public static Stack<String> getOutput(ArrayList query) {
+	String order [] = {"x" , "/" , "+" , "-"};
+	Stack<String> prosess = new Stack<String>();
+	Stack<String> temp = new Stack<String>();
+	int i = 0 ; 
+	for (Object q : query) {
+		System.out.println(q);
+		prosess.add((String)q);
+	}
+	 
+	// for(int i = 0 ; i < 3 ; i++)
+	while(prosess.size()>1)
+	{
+		if (i> 3)
+			break;
+		// while(prosess.size()>1)
+			System.out.println("inside"+ i + prosess.toString());
+			// for (int c = 0 ; c < query.size() ; c++)
+			while (!prosess.isEmpty())
+			 // if ((String) query.get(c) == order[i])
+				{
+					
+					String poped  = prosess.pop();
+					if (poped.equals(order[i]))
+					{
+						long first = Long.parseLong(prosess.pop()) ; 
+						long second = Long.parseLong(temp.pop()) ; 					long third =69;
+						switch (order[i]) {
+							case "x":
+								third =second * first;
+								break;
+
+							case "/":
+								third =second / first;
+								break;
+							case "+":
+								third =second + first;
+								break;
+							case "-":
+								third =second - first;
+								break;
+							default:
+								break;
+						}
+						temp.add(""+third);
+					}
+
+
+					else
+					{
+						temp.add(poped)	;
+					}
+				}
+			prosess.addAll(temp);
+			if (!temp.contains(order[i]))
+			{
+				i++; 
+				temp.clear();
+			}
+			temp.clear();
+	}
+	return prosess;
 }
 
 }

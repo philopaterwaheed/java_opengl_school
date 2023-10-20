@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,8 +79,10 @@ public class calculator extends JFrame implements ActionListener {
 		ArrayList <ArrayList <String> >  tokens ; 
 		if (logic.valid(query)){
 			System.out.println("isValid");
-			outquery = logic.tokinize(query).toString();
-
+			query = logic.tokinize(query);
+			System.out.println(outquery);
+			Stack last = logic.getOutput(query);
+			outquery = last.toString();
 		}
 		else{ // done 
 			outquery = ("notValid");
