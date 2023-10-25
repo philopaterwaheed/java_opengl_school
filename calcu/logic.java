@@ -106,6 +106,8 @@ public static ArrayList <String> tokinize (ArrayList query) {
 public static Stack<String> getOutput(ArrayList query) {
 	String order [] = {"x" , "/" , "+" , "-"};
 	Stack<String> prosess = new Stack<String>();
+	Stack<String> notvalid = new Stack<String>();
+	notvalid.add("notvalid");
 	Stack<String> temp = new Stack<String>();
 	int i = 0 ; 
 	for (Object q : query) {
@@ -125,6 +127,7 @@ public static Stack<String> getOutput(ArrayList query) {
 			 // if ((String) query.get(c) == order[i])
 				{
 					
+					try {
 					String poped  = prosess.pop();
 					if (poped.equals(order[i]))
 					{
@@ -136,6 +139,8 @@ public static Stack<String> getOutput(ArrayList query) {
 								break;
 
 							case "/":
+								if (first == 0)
+									return notvalid;
 								third =second / first;
 								break;
 							case "+":
@@ -155,6 +160,10 @@ public static Stack<String> getOutput(ArrayList query) {
 					{
 						temp.add(poped)	;
 					}
+				}
+				catch(NumberFormatException nfe){
+					return notvalid;
+				}
 				}
 			prosess.addAll(temp);
 			if (!temp.contains(order[i]))
