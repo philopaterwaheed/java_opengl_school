@@ -118,7 +118,7 @@ System.out.println("keyTyped");
 	for (pbutton x : buttons)
 		if (x.code == (code) || x.scode == code )
 		{
-			// System.out.println("code : " + x.code + "x" + code);
+			System.out.println("code : " + x.code + "x" + code);
 			return x ; 
 		}
 	return null ;

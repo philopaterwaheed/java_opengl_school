@@ -6,9 +6,18 @@ import java.util.Stack;
 
 public class logic {
 	public static boolean  valid (ArrayList query) {
-		return (validBrace(query)&& validOp(query)) ; 
+		return (validBrace(query)&& validOp(query)&&validneg(query)) ; 
 	}
   
+
+public static boolean  validneg (ArrayList query) { 
+	for (int i =1 ; i < query.size()-1 ; i ++){
+		if (Character.isDigit(((String)query.get(i-1)).charAt(0)) && ((String)query.get(i))=="+-")
+			return false ; 
+		
+	}
+	return true;
+}
 public static boolean  validOp (ArrayList query) {
 	String [] op = {"+" , "-" , "/","x"} ;
 	// String [] operated = (String[])(query.toArray());
@@ -110,9 +119,22 @@ public static Stack<String> getOutput(ArrayList query) {
 	notvalid.add("notvalid");
 	Stack<String> temp = new Stack<String>();
 	int i = 0 ; 
+	boolean neg = false;
 	for (Object q : query) {
 		System.out.println(q);
-		prosess.add((String)q);
+		if ((String)q!="+-"){
+			for (int j = 0 ; j  < order.length; j++)
+				if (neg == true && (String) q == order[j])
+						return notvalid;
+			if (neg != true)
+			prosess.add((String)q);
+			else 
+				prosess.add ("-"+q);
+
+		}
+		else{
+			neg = true;
+		}
 	}
 	 
 	// for(int i = 0 ; i < 3 ; i++)
