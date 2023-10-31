@@ -10,7 +10,7 @@ import javax.swing.*;
 public class calculator extends JFrame implements ActionListener ,KeyListener {
    static TextField inbox = new TextField();
    static TextField outbox = new TextField();
-    pbutton buttons [] = new pbutton[35];
+    pbutton buttons [] = new pbutton[20];
     JPanel jp = new JPanel();
     static ArrayList <String> query = new ArrayList <String> ();
     static String outquery = "";
@@ -35,9 +35,9 @@ public class calculator extends JFrame implements ActionListener ,KeyListener {
 	outbox.setFocusable(false);
 	int bunnum = 0; //buttons number 
 
-	for (int i = 0 ; i < 7; i ++ ) 
+	for (int i = 0 ; i < 5; i ++ ) 
 	{
-		for (int c = 0; c < 5; c++) {
+		for (int c = 0; c < 4; c++) {
 			buttons[bunnum]= new pbutton(instructions.map[i][c]);
 			buttons[bunnum].func = (instructions.func[i][c]);
 			buttons[bunnum].code = (instructions.code[i][c]);
@@ -49,7 +49,7 @@ public class calculator extends JFrame implements ActionListener ,KeyListener {
 		}
 	}
 
-	jp.setLayout(new GridLayout (7,5)); // the more not inculded 
+	jp.setLayout(new GridLayout (5,4)); // the more not inculded 
         add(jp, BorderLayout.SOUTH);
 	add(inbox, BorderLayout.NORTH);
 	add(outbox, BorderLayout.CENTER);
@@ -87,7 +87,9 @@ System.out.println("keyTyped");
     public void keyPressed(KeyEvent e) {
 	System.out.println("keyPressed");		      // String out = ((JButton)e.getSource()).getText();
 	       // System.out.println(out);
+	       if (e != null){
 	       pbutton gotButton = getButton(e.getKeyCode());
+	       System.out.println("got here");
 	       if (gotButton != null)
 	       {
 		       System.out.println(gotButton);
@@ -99,6 +101,7 @@ System.out.println("keyTyped");
 		       outbox.setText(outquery);
 	       }
 	       else return;
+	       }
 
     }
     @Override
@@ -124,6 +127,15 @@ System.out.println("keyTyped");
 	return null ;
     }
     
+    public static String getnum(double d ) {
+	    if (((d * 1000) % 1000) > 0 )
+	    {
+			return "" +d ; 
+	    }
+		return "" + (int) d ; 
+
+    	
+    }
 	static void clac (ArrayList query) {
 		System.out.println(query);	
 		ArrayList <ArrayList <String> >  tokens ; 

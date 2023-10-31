@@ -153,8 +153,8 @@ public static Stack<String> getOutput(ArrayList query) {
 					String poped  = prosess.pop();
 					if (poped.equals(order[i]))
 					{
-						long first = Long.parseLong(prosess.pop()) ; 
-						long second = Long.parseLong(temp.pop()) ; 					long third =69;
+						double first = Double.parseDouble(prosess.pop()) ; 
+						double second = Double.parseDouble(temp.pop()) ; 					double third =69;
 						switch (order[i]) {
 							case "x":
 								third =second * first;
@@ -195,6 +195,7 @@ public static Stack<String> getOutput(ArrayList query) {
 			}
 			temp.clear();
 	}
+
 	return prosess;
 }
 
